@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Fondo Scrubbing Nativo con Navbar</title>
+    
+<script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define el contenedor de desplazamiento */
+        .scroll-container {
+            /* Mismo factor de desplazamiento: 5 veces la altura de la ventana. */
+            /* Controla qué tan rápido se reproduce el video al hacer scroll. */
+            height: 500vh; 
+        }
+
+        /* Contenedor del video fijo a pantalla completa */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; /* Fondo */
+        }
+
+        /* Estilo para el elemento VIDEO nativo */
+        #bg-video {
+            /* Esto asegura que el video cubra completamente el contenedor manteniendo el aspecto */
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Estilos personalizados para el efecto de desenfoque de fondo (backdrop-filter) */
+        .backdrop-blur-custom {
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+        }
+
+        /* Contenido de primer plano que está fijo */
+        .content-overlay {
+            position: fixed;
+            z-index: 10;
+            /* Posicionamiento: 100px desde la izquierda y 150px desde abajo */
+            left: 5rem; /* 5 * 4 = 20px */
+            bottom: 9.375rem; /* 150px (cerca de la barra inferior) */
+        }
+
+        /* Estilos para el icono de mouse de scroll */
+        .scroll-down-mouse {
+            position: fixed;
+            bottom: 8rem; /* Posicionado sobre la barra inferior */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 15px;
+            z-index: 40; /* Debajo de la UI pero sobre el contenido */
+            opacity: 0.7;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+            visibility: visible;
+        }
+
+        .scroll-down-wheel {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 10px;
+            background-color: white;
+            border-radius: 2px;
+            animation: scroll-wheel-animation 2s infinite;
+        }
+
+        /* Animación para la rueda del mouse */
+        @keyframes scroll-wheel-animation {
+            0% { top: 10px; opacity: 1; }
+            50% { top: 20px; opacity: 0; }
+            100% { top: 10px; opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans overflow-x-hidden">
+
+    <!-- 1. Barra de Navegación Superior (Navbar) -->
+    <nav class="fixed top-6 left-6 right-6 z-50 p-6 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom rounded-full">
+        <!-- Logo o Título -->
+        <div class="text-3xl font-bold tracking-widest text-white">Artificial_Models</div>
+        
+        <!-- Enlaces de Navegación -->
+        <div class="flex space-x-8 text-lg font-semibold">
+            <a href="#" class="hover:text-cyan-400 transition-colors">HOME</a>
+            <a href="#about" class="hover:text-cyan-400 transition-colors">ABOUT</a>
+            <a href="#gallery" class="hover:text-cyan-400 transition-colors">GALLERY</a>
+            <a href="#" class="hover:text-cyan-400 transition-colors">PRODUCTS</a>
+        </div>
+        
+        <!-- Botón de Acción -->
+        <button class="px-6 py-2 border border-white rounded-full text-lg hover:bg-white hover:text-black transition-colors">
+            Contact Us
+        </button>
+    </nav>
+
+    <!-- 2. Contenedor del Video de Fondo (Fijo y a pantalla completa) -->
+    <div class="video-container">
+        <video id="bg-video" muted playsinline preload="auto">
+            <!-- Videos de ejemplo, reemplaza con tu video local o URL -->
+            <source src="/01.mp4" type="video/mp4">
+            <source src="http://techslides.com/demos/sample-videos/small.webm" type="video/webm">
+            
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+        
+        <!-- Capa de Oscurecimiento para mejorar la lectura del texto -->
+        <div class="absolute inset-0 bg-black opacity-30"></div>
+    </div>
+
+    <!-- 3. Contenido de Texto Principal (Fijo sobre el Video) -->
+    <div class="content-overlay">
+        <h1 class="text-6xl md:text-8xl tracking-tight mb-4 drop-shadow-lg text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+            <!-- Se ajusta el texto para que esté en dos líneas y con diferentes grosores de fuente -->
+            <span class="font-normal">Artificial</span>
+            <br>
+            <span class="font-extrabold">Models</span>
+        </h1>
+        <p class="text-xl md:text-3xl max-w-3xl drop-shadow-lg" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+            DISCOVER DIGITAL ART AND COLLECT NFTS
+        </p>
+    </div>
+
+    <!-- 4. Contenedor Principal que genera el desplazamiento -->
+    <div class="relative z-10">
+        <div class="scroll-container">
+            <!-- Esta sección vacía mantiene el desplazamiento mientras se ejecuta el scrubbing -->
+            <div class="h-screen"></div> 
+            
+        </div>
+
+        <!-- 5. Contenido Estático (Aparece después de la animación del video) -->
+
+        <!-- Segunda Pantalla (Aparece después del scrubbing) -->
+        <div id="about" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
+            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-cyan-400">
+                The Future is Digital
+            </h2>
+            <p class="text-xl max-w-4xl mb-10 text-gray-300">
+                We are a company specializing in Artificial Intelligence. We develop innovative solutions and create intelligent models to drive the future of technology.
+            </p>
+            <button class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors">
+                VIEW COLLECTION
+            </button>
+        </div>
+
+        <!-- Tercera Pantalla -->
+        <div id="gallery" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
+            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-emerald-400">
+                Join The Orbit
+            </h2>
+            <p class="text-2xl max-w-4xl mb-10 text-gray-300">
+                Be part of the exclusive community of artists and collectors.
+            </p>
+            <button class="px-8 py-3 bg-white text-gray-900 text-xl font-bold rounded-full hover:bg-gray-300 transition-colors">
+                JOIN US NOW
+            </button>
+        </div>
+
+        <!-- Sección de Contenido Final (Con Fondo Sólido para terminar el efecto) -->
+        <div class="min-h-screen bg-gray-900 p-10 flex flex-col items-center justify-center">
+            <h2 class="text-4xl font-bold mb-4 text-emerald-400">¡Llegaste al final!</h2>
+            <p class="text-lg max-w-xl text-gray-300">
+                Gracias por crear esta increíble experiencia de video scrubbing con nosotros.
+            </p>
+        </div>
+    </div>
+
+    <!-- 6. Barra Inferior de Estadísticas -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom text-white">
+        
+        <!-- Botón Play Video y Redes Sociales -->
+        <div class="flex items-center space-x-6">
+                 <!-- Aquí irían los iconos de redes sociales (se podrían usar SVGs o una librería) -->
+            <div class="flex space-x-4 text-2xl">
+                <a href="#" class="hover:text-cyan-400 transition-colors">f</a> <!-- Placeholder para Facebook -->
+                <a href="#" class="hover:text-cyan-400 transition-colors">t</a> <!-- Placeholder para Twitter -->
+            </div>
+        </div>
+        
+        <!-- Estadísticas -->
+        <div class="flex space-x-10 text-lg">
+            <div class="text-center">
+                <p class="font-bold text-2xl">27K+</p>
+                <p class="text-sm text-gray-400">ARTISTS</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-2xl">876K+</p>
+                <p class="text-sm text-gray-400">ARTWORK</p>
+            </div>
+            <div class="text-center">
+                <p class="font-bold text-2xl">20K+</p>
+                <p class="text-sm text-gray-400">AUCTION</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Icono de Mouse para Scroll -->
+    <div id="scroll-mouse-icon" class="scroll-down-mouse">
+        <span class="scroll-down-wheel"></span>
+    </div>
+
+    <!-- 7. JavaScript para el Scrubbing Nativo -->
+    <script>
+        // -----------------------------------------------------------
+        // CONFIGURACIÓN
+        // -----------------------------------------------------------
+        const SCRUB_SPEED_FACTOR = 2; // Altura de scroll = 5 veces el viewport
+
+        const video = document.getElementById('bg-video');
+        const scrollContainer = document.querySelector('.scroll-container');
+        
+        let videoDuration = 0; 
+        let scrollMax = 0;     
+        let isVideoReady = false;
+
+        // Función para configurar la altura de scroll y el listener
+        function setupScrubbing() {
+            // 1. Obtener la duración real del video
+            videoDuration = video.duration;
+            
+            // 2. Calcular el desplazamiento máximo
+            // Asegura que el contenedor de scroll tenga la altura definida por el factor
+            scrollContainer.style.height = `${SCRUB_SPEED_FACTOR * 100}vh`; 
+            scrollMax = scrollContainer.clientHeight - window.innerHeight;
+
+            // 3. Poner el video en el inicio y pausar
+            video.currentTime = 0;
+            video.pause(); 
+            isVideoReady = true;
+
+            // 4. Iniciar el listener de scroll
+            window.addEventListener('scroll', handleScroll);
+            window.addEventListener('resize', setupScrubbing); // Reajustar al cambiar tamaño
+            handleScroll(); // Ejecuta una vez para posicionar en 0
+            
+            console.log('Video cargado. Duración:', videoDuration, 'segundos. Scroll Máximo:', scrollMax);
+        }
+
+        // 5. La Función principal de "Scrubbing"
+        function handleScroll() {
+            // FIX: Añadimos una comprobación para asegurar que scrollMax sea un valor positivo.
+            if (!isVideoReady || videoDuration === 0 || scrollMax <= 0) return;
+
+            const scrollY = window.scrollY;
+
+            // Calcular el progreso del scroll de 0 a 1
+            let scrollProgress = scrollY / scrollMax;
+
+            // Limitar el progreso entre 0 y 1
+            if (scrollProgress < 0) scrollProgress = 0;
+            if (scrollProgress > 1) scrollProgress = 1;
+
+            // Mapear el progreso del scroll al tiempo del video
+            const newTime = scrollProgress * videoDuration;
+
+            // Asignar el nuevo tiempo al video
+            video.currentTime = newTime;
+        }
+        
+        // Ocultar el icono del mouse cuando el usuario llega a la sección 'about'
+        window.addEventListener('scroll', () => {
+            const aboutSection = document.getElementById('about');
+            const mouseIcon = document.getElementById('scroll-mouse-icon');
+            
+            // Ocultamos el icono un poco antes de que la sección 'about' llegue a la parte superior.
+            if (window.scrollY > aboutSection.offsetTop - window.innerHeight) {
+                mouseIcon.style.opacity = '0';
+                mouseIcon.style.visibility = 'hidden';
+            }
+        });
+
+        // Esperar a que el video cargue los metadatos (incluida la duración)
+        video.addEventListener('loadedmetadata', setupScrubbing);
+        
+        // El video debe cargarse y reproducirse (aún en silencio) al inicio para que el scrubbing funcione
+        window.onload = function() {
+            // Intentar cargar y reproducir el video. Esto es crucial en móviles.
+            video.load();
+            video.play().catch(e => {
+                // En algunos navegadores, el 'play' puede fallar sin interacción. 
+                // El scrubbing funcionará, pero el video puede no cargarse completamente al inicio.
+                console.warn("La reproducción automática falló, el video se manipulará vía scroll.");
+                // Si falla la reproducción, aún se llama a setupScrubbing cuando cargan los metadatos.
+            });
+        };
+
+    </script>
+</body>
+</html>
