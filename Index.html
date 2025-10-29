@@ -6,6 +6,9 @@
     <title>Video Fondo Scrubbing Nativo con Navbar</title>
     
 <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 1. Añadir el enlace a Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
     <style>
         /* Define el contenedor de desplazamiento */
         .scroll-container {
@@ -37,6 +40,14 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
+        /* Elementos de la UI que aparecerán con el scroll */
+        .ui-fade-in {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out;
+        }
+
 
         /* Estilos personalizados para el efecto de desenfoque de fondo (backdrop-filter) */
         .backdrop-blur-custom {
@@ -92,10 +103,9 @@
 <body class="bg-gray-900 text-white font-sans overflow-x-hidden">
 
     <!-- 1. Barra de Navegación Superior (Navbar) -->
-    <nav class="fixed top-6 left-6 right-6 z-50 p-6 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom rounded-full">
-        <!-- Logo o Título -->
-        <div class="text-3xl font-bold tracking-widest text-white">Artificial_Models</div>
-        
+    <nav class="fixed top-6 left-6 right-6 z-50 p-6 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom rounded-full ui-fade-in border border-white/30">
+        <!-- Logo -->
+        <div class="text-3xl font-bold tracking-widest text-white">Art_Models</div>        
         <!-- Enlaces de Navegación -->
         <div class="flex space-x-8 text-lg font-semibold">
             <a href="#" class="hover:text-cyan-400 transition-colors">HOME</a>
@@ -125,7 +135,10 @@
     </div>
 
     <!-- 3. Contenido de Texto Principal (Fijo sobre el Video) -->
-    <div class="content-overlay">
+    <div class="content-overlay ui-fade-in">
+        <!-- 3.1. Logo de la Marca -->
+        <img src="/Logo_mono.svg" alt="Artificial Models Logo" class="h-[160px] mb-4"> <!-- Usa valores arbitrarios como h-[100px] para un control preciso -->
+
         <h1 class="text-6xl md:text-8xl tracking-tight mb-4 drop-shadow-lg text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
             <!-- Se ajusta el texto para que esté en dos líneas y con diferentes grosores de fuente -->
             <span class="font-normal">Artificial</span>
@@ -133,7 +146,7 @@
             <span class="font-extrabold">Models</span>
         </h1>
         <p class="text-xl md:text-3xl max-w-3xl drop-shadow-lg" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-            DISCOVER DIGITAL ART AND COLLECT NFTS
+            DISCOVER DIGITAL ART AND IA PRODUCTS
         </p>
     </div>
 
@@ -183,14 +196,24 @@
     </div>
 
     <!-- 6. Barra Inferior de Estadísticas -->
-    <div class="fixed bottom-0 left-0 right-0 z-50 p-6 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom text-white">
+    <div class="fixed bottom-0 left-0 right-0 z-50 px-6 py-8 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom text-white ui-fade-in">
         
         <!-- Botón Play Video y Redes Sociales -->
-        <div class="flex items-center space-x-6">
-                 <!-- Aquí irían los iconos de redes sociales (se podrían usar SVGs o una librería) -->
-            <div class="flex space-x-4 text-2xl">
-                <a href="#" class="hover:text-cyan-400 transition-colors">f</a> <!-- Placeholder para Facebook -->
-                <a href="#" class="hover:text-cyan-400 transition-colors">t</a> <!-- Placeholder para Twitter -->
+        <div class="flex items-center">
+            <!-- Iconos de Redes Sociales -->
+            <div class="flex space-x-5">
+                <!-- Facebook -->
+                <a href="#" class="text-white hover:text-cyan-400 transition-colors" aria-label="Facebook">
+                    <i class="fab fa-facebook-f fa-lg"></i>
+                </a>
+                <!-- TikTok -->
+                <a href="#" class="text-white hover:text-cyan-400 transition-colors" aria-label="TikTok">
+                    <i class="fab fa-tiktok fa-lg"></i>
+                </a>
+                <!-- Instagram -->
+                <a href="#" class="text-white hover:text-cyan-400 transition-colors" aria-label="Instagram">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </a>
             </div>
         </div>
         
@@ -222,7 +245,7 @@
         // -----------------------------------------------------------
         // CONFIGURACIÓN
         // -----------------------------------------------------------
-        const SCRUB_SPEED_FACTOR = 2; // Altura de scroll = 5 veces el viewport
+        const SCRUB_SPEED_FACTOR = 5; // Altura de scroll = 5 veces el viewport
 
         const video = document.getElementById('bg-video');
         const scrollContainer = document.querySelector('.scroll-container');
@@ -275,15 +298,27 @@
             video.currentTime = newTime;
         }
         
-        // Ocultar el icono del mouse cuando el usuario llega a la sección 'about'
+        // --- LÓGICA DE APARICIÓN DE LA UI Y DESAPARICIÓN DEL MOUSE ---
         window.addEventListener('scroll', () => {
             const aboutSection = document.getElementById('about');
             const mouseIcon = document.getElementById('scroll-mouse-icon');
+            const uiElements = document.querySelectorAll('.ui-fade-in');
+
+            // 1. Mostrar la UI cuando el usuario empieza a hacer scroll
+            if (window.scrollY > 10) {
+                uiElements.forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.visibility = 'visible';
+                });
+            }
             
-            // Ocultamos el icono un poco antes de que la sección 'about' llegue a la parte superior.
+            // 2. Ocultar el icono del mouse cuando se acerca a la sección 'about'
             if (window.scrollY > aboutSection.offsetTop - window.innerHeight) {
                 mouseIcon.style.opacity = '0';
                 mouseIcon.style.visibility = 'hidden';
+            } else if (window.scrollY <= 10) { // 3. Re-mostrar el icono si el usuario vuelve arriba
+                mouseIcon.style.opacity = '0.7';
+                mouseIcon.style.visibility = 'visible';
             }
         });
 
