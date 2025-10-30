@@ -105,19 +105,19 @@
     <!-- 1. Barra de Navegación Superior (Navbar) -->
     <nav class="fixed top-6 left-6 right-6 z-50 p-6 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom rounded-full ui-fade-in border border-white/30">
         <!-- Logo -->
-        <div class="text-3xl font-bold tracking-widest text-white">Art_Models</div>        
+        <div class="text-3xl font-bold tracking-widest text-white">_ART_Models</div>        
         <!-- Enlaces de Navegación -->
         <div class="flex space-x-8 text-lg font-semibold">
             <a href="#" class="hover:text-cyan-400 transition-colors">HOME</a>
             <a href="#about" class="hover:text-cyan-400 transition-colors">ABOUT</a>
             <a href="#gallery" class="hover:text-cyan-400 transition-colors">GALLERY</a>
-            <a href="#" class="hover:text-cyan-400 transition-colors">PRODUCTS</a>
+            <a href="#products" class="hover:text-cyan-400 transition-colors">PRODUCTS</a>
         </div>
         
         <!-- Botón de Acción -->
-        <button class="px-6 py-2 border border-white rounded-full text-lg hover:bg-white hover:text-black transition-colors">
+        <a href="#contact" class="px-6 py-2 border border-white rounded-full text-lg hover:bg-white hover:text-black transition-colors">
             Contact Us
-        </button>
+        </a>
     </nav>
 
     <!-- 2. Contenedor del Video de Fondo (Fijo y a pantalla completa) -->
@@ -137,7 +137,7 @@
     <!-- 3. Contenido de Texto Principal (Fijo sobre el Video) -->
     <div class="content-overlay ui-fade-in">
         <!-- 3.1. Logo de la Marca -->
-        <img src="/Logo_mono.svg" alt="Artificial Models Logo" class="h-[160px] mb-4"> <!-- Usa valores arbitrarios como h-[100px] para un control preciso -->
+        <img src="/Logo.svg" alt="Artificial Models Logo" class="h-[160px] mb-4 opacity-75"> <!-- Usa valores arbitrarios como h-[100px] para un control preciso -->
 
         <h1 class="text-6xl md:text-8xl tracking-tight mb-4 drop-shadow-lg text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
             <!-- Se ajusta el texto para que esté en dos líneas y con diferentes grosores de fuente -->
@@ -186,12 +186,52 @@
             </button>
         </div>
 
-        <!-- Sección de Contenido Final (Con Fondo Sólido para terminar el efecto) -->
-        <div class="min-h-screen bg-gray-900 p-10 flex flex-col items-center justify-center">
-            <h2 class="text-4xl font-bold mb-4 text-emerald-400">¡Llegaste al final!</h2>
-            <p class="text-lg max-w-xl text-gray-300">
-                Gracias por crear esta increíble experiencia de video scrubbing con nosotros.
+        <!-- Cuarta Pantalla (Productos) -->
+        <div id="products" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
+            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-fuchsia-400">
+                AI-Powered Creations
+            </h2>
+            <p class="text-2xl max-w-4xl mb-10 text-gray-300">
+                Explore our innovative tools, from an AI app that generates stunning product images to another designed for architectural visualization.
             </p>
+            <button class="px-8 py-3 border border-fuchsia-400 text-fuchsia-400 text-xl font-bold rounded-full hover:bg-fuchsia-400 hover:text-black transition-colors">
+                EXPLORE PRODUCTS
+            </button>
+        </div>
+
+
+        <!-- Sección de Contenido Final (Con Fondo Sólido para terminar el efecto) -->
+        <div id="contact" class="min-h-screen bg-gray-900 p-10 flex flex-col items-center justify-center">
+            <h2 class="text-5xl font-extrabold mb-8 text-center text-cyan-400">Contact Us</h2>
+            <form class="w-full max-w-2xl">
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-first-name">Nombre</label>
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-first-name" type="text" placeholder="Jane">
+                    </div>
+                    <div class="w-full md:w-1/2 px-3">
+                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-email">Correo</label>
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-email" type="email" placeholder="jane@example.com">
+                    </div>
+                </div>
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-subject">Asunto</label>
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-subject" type="text" placeholder="Interesado en tus productos de IA">
+                    </div>
+                </div>
+                <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-message">Mensaje</label>
+                        <textarea class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500 h-48 resize-none" id="grid-message"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <button class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" type="button">
+                        Enviar Mensaje
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -203,15 +243,15 @@
             <!-- Iconos de Redes Sociales -->
             <div class="flex space-x-5">
                 <!-- Facebook -->
-                <a href="#" class="text-white hover:text-cyan-400 transition-colors" aria-label="Facebook">
+                <a href="https://www.facebook.com/artificialmodels/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition-colors" aria-label="Facebook">
                     <i class="fab fa-facebook-f fa-lg"></i>
                 </a>
                 <!-- TikTok -->
-                <a href="#" class="text-white hover:text-cyan-400 transition-colors" aria-label="TikTok">
+                <a href="https://www.tiktok.com/@artificial_models" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition-colors" aria-label="TikTok">
                     <i class="fab fa-tiktok fa-lg"></i>
                 </a>
                 <!-- Instagram -->
-                <a href="#" class="text-white hover:text-cyan-400 transition-colors" aria-label="Instagram">
+                <a href="https://www.instagram.com/artificial_models/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition-colors" aria-label="Instagram">
                     <i class="fab fa-instagram fa-lg"></i>
                 </a>
             </div>
