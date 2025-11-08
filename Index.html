@@ -104,20 +104,28 @@
 
     <!-- 1. Barra de Navegación Superior (Navbar) -->
     <nav class="fixed top-6 left-6 right-6 z-50 p-6 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom rounded-full ui-fade-in border border-white/30">
-        <!-- Logo -->
-        <div class="text-3xl font-bold tracking-widest text-white">_ART_Models</div>        
+        <!-- Contenedor izquierdo (ocupa el mismo espacio que los botones de la derecha para centrar los enlaces) -->
+        <div class="flex-1"></div>
         <!-- Enlaces de Navegación -->
-        <div class="flex space-x-8 text-lg font-semibold">
-            <a href="#" class="hover:text-cyan-400 transition-colors">HOME</a>
-            <a href="#about" class="hover:text-cyan-400 transition-colors">ABOUT</a>
-            <a href="#gallery" class="hover:text-cyan-400 transition-colors">GALLERY</a>
-            <a href="#products" class="hover:text-cyan-400 transition-colors">PRODUCTS</a>
+        <div id="nav-links" class="flex space-x-8 text-lg font-semibold">
+            <a href="#" class="hover:text-cyan-400 transition-colors" data-key="home">INICIO</a>
+            <a href="#about" class="hover:text-cyan-400 transition-colors" data-key="about">NOSOTROS</a>
+            <a href="#gallery" class="hover:text-cyan-400 transition-colors" data-key="gallery">GALERÍA</a>
+            <a href="#products" class="hover:text-cyan-400 transition-colors" data-key="products">PRODUCTOS</a>
         </div>
         
-        <!-- Botón de Acción -->
-        <a href="#contact" class="px-6 py-2 border border-white rounded-full text-lg hover:bg-white hover:text-black transition-colors">
-            Contact Us
-        </a>
+        <!-- Botones de Acción y Selector de Idioma -->
+        <div class="flex flex-1 justify-end items-center space-x-6">
+            <!-- Selector de Idioma -->
+            <div class="flex space-x-2 text-sm font-semibold">
+                <button id="btn-es" class="px-3 py-1 rounded-full bg-white text-black transition-colors">ES</button>
+                <button id="btn-en" class="px-3 py-1 rounded-full text-white hover:bg-white/20 transition-colors">EN</button>
+            </div>
+            <!-- Botón de Acción -->
+            <a href="#contact" id="contact-btn-nav" class="px-6 py-2 border border-white rounded-full text-lg hover:bg-white hover:text-black transition-colors" data-key="contact">
+                Contáctanos
+            </a>
+        </div>
     </nav>
 
     <!-- 2. Contenedor del Video de Fondo (Fijo y a pantalla completa) -->
@@ -145,8 +153,8 @@
             <br>
             <span class="font-extrabold">Models</span>
         </h1>
-        <p class="text-xl md:text-3xl max-w-3xl drop-shadow-lg" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
-            DISCOVER DIGITAL ART AND IA PRODUCTS
+        <p id="hero-subtitle" class="text-xl md:text-3xl max-w-3xl drop-shadow-lg" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.5);" data-key="hero_subtitle">
+            DESCUBRE ARTE DIGITAL Y PRODUCTOS DE IA
         </p>
     </div>
 
@@ -162,76 +170,81 @@
 
         <!-- Segunda Pantalla (Aparece después del scrubbing) -->
         <div id="about" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
-            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-cyan-400">
-                The Future is Digital
+            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-cyan-400" data-key="about_title">
+                El Futuro es Digital
             </h2>
-            <p class="text-xl max-w-4xl mb-10 text-gray-300">
-                We are a company specializing in Artificial Intelligence. We develop innovative solutions and create intelligent models to drive the future of technology.
+            <p class="text-xl max-w-4xl mb-10 text-gray-300" data-key="about_p">
+                Somos una empresa especializada en Inteligencia Artificial. Desarrollamos soluciones innovadoras y creamos modelos inteligentes para impulsar el futuro de la tecnología.
             </p>
-            <button class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors">
-                VIEW COLLECTION
+            <button class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" data-key="about_btn">
+                VER COLECCIÓN
             </button>
         </div>
 
         <!-- Tercera Pantalla -->
         <div id="gallery" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
-            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-emerald-400">
-                Join The Orbit
+            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-emerald-400" data-key="gallery_title">
+                Únete a la Órbita
             </h2>
-            <p class="text-2xl max-w-4xl mb-10 text-gray-300">
-                Be part of the exclusive community of artists and collectors.
+            <p class="text-2xl max-w-4xl mb-10 text-gray-300" data-key="gallery_p">
+                Sé parte de la comunidad exclusiva de artistas y coleccionistas.
             </p>
-            <button class="px-8 py-3 bg-white text-gray-900 text-xl font-bold rounded-full hover:bg-gray-300 transition-colors">
-                JOIN US NOW
+            <button class="px-8 py-3 bg-white text-gray-900 text-xl font-bold rounded-full hover:bg-gray-300 transition-colors" data-key="gallery_btn">
+                ÚNETE AHORA
             </button>
         </div>
 
         <!-- Cuarta Pantalla (Productos) -->
         <div id="products" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
-            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-fuchsia-400">
-                AI-Powered Creations
+            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-fuchsia-400" data-key="products_title">
+                Creaciones con IA
             </h2>
-            <p class="text-2xl max-w-4xl mb-10 text-gray-300">
-                Explore our innovative tools, from an AI app that generates stunning product images to another designed for architectural visualization.
+            <p class="text-2xl max-w-4xl mb-10 text-gray-300" data-key="products_p">
+                Explora nuestras herramientas innovadoras, desde una app de IA que genera imágenes de productos hasta otra diseñada para visualización arquitectónica.
             </p>
-            <button class="px-8 py-3 border border-fuchsia-400 text-fuchsia-400 text-xl font-bold rounded-full hover:bg-fuchsia-400 hover:text-black transition-colors">
-                EXPLORE PRODUCTS
+            <button class="px-8 py-3 border border-fuchsia-400 text-fuchsia-400 text-xl font-bold rounded-full hover:bg-fuchsia-400 hover:text-black transition-colors" data-key="products_btn">
+                EXPLORAR PRODUCTOS
             </button>
         </div>
 
 
         <!-- Sección de Contenido Final (Con Fondo Sólido para terminar el efecto) -->
         <div id="contact" class="min-h-screen bg-gray-900 p-10 flex flex-col items-center justify-center">
-            <h2 class="text-5xl font-extrabold mb-8 text-center text-cyan-400">Contact Us</h2>
-            <form class="w-full max-w-2xl">
+            <h2 class="text-5xl font-extrabold mb-4 text-center text-cyan-400" data-key="contact_title">Contáctanos</h2>
+            <form id="contact-form" class="w-full max-w-2xl">
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-first-name">Nombre</label>
+                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-first-name" data-key="form_name">Nombre</label>
                         <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-first-name" type="text" placeholder="Jane">
+                        <p class="text-red-500 text-xs italic hidden">Por favor, rellena este campo.</p>
                     </div>
                     <div class="w-full md:w-1/2 px-3">
-                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-email">Correo</label>
+                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-email" data-key="form_email">Correo</label>
                         <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-email" type="email" placeholder="jane@example.com">
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-subject">Asunto</label>
+                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-subject" data-key="form_subject">Asunto</label>
                         <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-subject" type="text" placeholder="Interesado en tus productos de IA">
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-message">Mensaje</label>
+                        <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-message" data-key="form_message">Mensaje</label>
                         <textarea class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500 h-48 resize-none" id="grid-message"></textarea>
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <button class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" type="button">
+                    <button id="submit-btn" class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" type="button" data-key="form_btn">
                         Enviar Mensaje
                     </button>
                 </div>
             </form>
+            <!-- Mensaje de éxito -->
+            <div id="success-message" class="text-center mt-6 text-emerald-400 font-semibold opacity-0 transition-opacity duration-500" data-key="form_success">
+                <i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito!
+            </div>
         </div>
     </div>
 
@@ -261,15 +274,15 @@
         <div class="flex space-x-10 text-lg">
             <div class="text-center">
                 <p class="font-bold text-2xl">27K+</p>
-                <p class="text-sm text-gray-400">ARTISTS</p>
+                <p class="text-sm text-gray-400" data-key="stats_artists">ARTISTAS</p>
             </div>
             <div class="text-center">
                 <p class="font-bold text-2xl">876K+</p>
-                <p class="text-sm text-gray-400">ARTWORK</p>
+                <p class="text-sm text-gray-400" data-key="stats_artwork">OBRAS DE ARTE</p>
             </div>
             <div class="text-center">
                 <p class="font-bold text-2xl">20K+</p>
-                <p class="text-sm text-gray-400">AUCTION</p>
+                <p class="text-sm text-gray-400" data-key="stats_auction">SUBASTAS</p>
             </div>
         </div>
 
@@ -376,6 +389,116 @@
                 // Si falla la reproducción, aún se llama a setupScrubbing cuando cargan los metadatos.
             });
         };
+
+        // -----------------------------------------------------------
+        // LÓGICA DE TRADUCCIÓN
+        // -----------------------------------------------------------
+        const translations = {
+            es: {
+                home: "INICIO",
+                about: "NOSOTROS",
+                gallery: "GALERÍA",
+                products: "PRODUCTOS",
+                contact: "Contáctanos",
+                hero_subtitle: "DESCUBRE ARTE DIGITAL Y PRODUCTOS DE IA",
+                about_title: "El Futuro es Digital",
+                about_p: "Somos una empresa especializada en Inteligencia Artificial. Desarrollamos soluciones innovadoras y creamos modelos inteligentes para impulsar el futuro de la tecnología.",
+                about_btn: "VER COLECCIÓN",
+                gallery_title: "Únete a la Órbita",
+                gallery_p: "Sé parte de la comunidad exclusiva de artistas y coleccionistas.",
+                gallery_btn: "ÚNETE AHORA",
+                products_title: "Creaciones con IA",
+                products_p: "Explora nuestras herramientas innovadoras, desde una app de IA que genera imágenes de productos hasta otra diseñada para visualización arquitectónica.",
+                products_btn: "EXPLORAR PRODUCTOS",
+                contact_title: "Contáctanos",
+                form_name: "Nombre",
+                form_email: "Correo",
+                form_subject: "Asunto",
+                form_message: "Mensaje",
+                form_btn: "Enviar Mensaje",
+                form_success: "¡Mensaje enviado con éxito!",
+                stats_artists: "ARTISTAS",
+                stats_artwork: "OBRAS DE ARTE",
+                stats_auction: "SUBASTAS",
+            },
+            en: {
+                home: "HOME",
+                about: "ABOUT",
+                gallery: "GALLERY",
+                products: "PRODUCTS",
+                contact: "Contact Us",
+                hero_subtitle: "DISCOVER DIGITAL ART AND IA PRODUCTS",
+                about_title: "The Future is Digital",
+                about_p: "We are a company specializing in Artificial Intelligence. We develop innovative solutions and create intelligent models to drive the future of technology.",
+                about_btn: "VIEW COLLECTION",
+                gallery_title: "Join The Orbit",
+                gallery_p: "Be part of the exclusive community of artists and collectors.",
+                gallery_btn: "JOIN US NOW",
+                products_title: "AI-Powered Creations",
+                products_p: "Explore our innovative tools, from an AI app that generates stunning product images to another designed for architectural visualization.",
+                products_btn: "EXPLORE PRODUCTS",
+                contact_title: "Contact Us",
+                form_name: "Name",
+                form_email: "Email",
+                form_subject: "Subject",
+                form_message: "Message",
+                form_btn: "Send Message",
+                form_success: "Message sent successfully!",
+                stats_artists: "ARTISTS",
+                stats_artwork: "ARTWORK",
+                stats_auction: "AUCTION",
+            }
+        };
+
+        const setLanguage = (lang) => {
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-key');
+                el.textContent = translations[lang][key];
+            });
+        };
+
+        document.getElementById('btn-es').addEventListener('click', () => {
+            setLanguage('es');
+            // Activar botón ES
+            document.getElementById('btn-es').classList.add('bg-white', 'text-black');
+            document.getElementById('btn-es').classList.remove('text-white');
+            // Desactivar botón EN
+            document.getElementById('btn-en').classList.remove('bg-white', 'text-black');
+            document.getElementById('btn-en').classList.add('text-white');
+        });
+
+        document.getElementById('btn-en').addEventListener('click', () => {
+            setLanguage('en');
+            // Activar botón EN
+            document.getElementById('btn-en').classList.add('bg-white', 'text-black');
+            document.getElementById('btn-en').classList.remove('text-white');
+            // Desactivar botón ES
+            document.getElementById('btn-es').classList.remove('bg-white', 'text-black');
+            document.getElementById('btn-es').classList.add('text-white');
+        });
+
+        // -----------------------------------------------------------
+        // LÓGICA DEL FORMULARIO DE CONTACTO
+        // -----------------------------------------------------------
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMessage = document.getElementById('success-message');
+
+        submitBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevenir el comportamiento por defecto
+
+            // Mostrar mensaje de éxito
+            successMessage.style.opacity = '1';
+
+            // Limpiar el formulario
+            contactForm.reset();
+
+            // Ocultar el mensaje después de 4 segundos
+            setTimeout(() => {
+                successMessage.style.opacity = '0';
+            }, 4000);
+        });
 
     </script>
 </body>
