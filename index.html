@@ -213,32 +213,32 @@
         <!-- Sección de Contenido Final (Con Fondo Sólido para terminar el efecto) -->
         <div id="contact" class="min-h-screen bg-gray-900 p-10 flex flex-col items-center justify-center">
             <h2 class="text-5xl font-extrabold mb-4 text-center text-cyan-400" data-key="contact_title">Contáctanos</h2>
-            <form id="contact-form" class="w-full max-w-2xl" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+            <form id="contact-form" class="w-full max-w-2xl">
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-first-name" data-key="form_name">Nombre</label>
-                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-first-name" name="name" type="text" placeholder="Jane" required>
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-first-name" type="text" placeholder="Jane">
                         <p class="text-red-500 text-xs italic hidden">Por favor, rellena este campo.</p>
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-email" data-key="form_email">Correo</label>
-                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-email" name="email" type="email" placeholder="jane@example.com" required>
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-email" type="email" placeholder="jane@example.com">
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-subject" data-key="form_subject">Asunto</label>
-                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-subject" name="subject" type="text" placeholder="Interesado en tus productos de IA">
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-subject" type="text" placeholder="Interesado en tus productos de IA">
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-message" data-key="form_message">Mensaje</label>
-                        <textarea class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500 h-48 resize-none" id="grid-message" name="message" required></textarea>
+                        <textarea class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500 h-48 resize-none" id="grid-message"></textarea>
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <button id="submit-btn" class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" type="submit" data-key="form_btn">
+                    <button id="submit-btn" class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" type="button" data-key="form_btn">
                         Enviar Mensaje
                     </button>
                 </div>
@@ -272,6 +272,11 @@
             </div>
         </div>
         
+        <!-- Número de Versión -->
+        <div class="absolute left-1/2 -translate-x-1/2 text-center">
+            <p class="text-xs text-gray-500">v1.0.0</p>
+        </div>
+
         <!-- Estadísticas -->
         <div class="flex space-x-10 text-lg">
             <div class="text-center">
@@ -484,34 +489,22 @@
         // LÓGICA DEL FORMULARIO DE CONTACTO
         // -----------------------------------------------------------
         const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
         const successMessage = document.getElementById('success-message');
 
-        contactForm.addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevenir el envío tradicional para manejarlo con JS
+        submitBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevenir el comportamiento por defecto
 
-            const form = event.target;
-            const data = new FormData(form);
+            // Mostrar mensaje de éxito
+            successMessage.style.opacity = '1';
 
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
+            // Limpiar el formulario
+            contactForm.reset();
 
-                if (response.ok) {
-                    successMessage.style.opacity = '1'; // Mostrar mensaje de éxito
-                    form.reset(); // Limpiar el formulario
-                    setTimeout(() => { successMessage.style.opacity = '0'; }, 4000); // Ocultar después de 4s
-                } else {
-                    // Opcional: Manejar errores si Formspree falla
-                    alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
-                }
-            } catch (error) {
-                alert('Hubo un error de red. Por favor, comprueba tu conexión.');
-            }
+            // Ocultar el mensaje después de 4 segundos
+            setTimeout(() => {
+                successMessage.style.opacity = '0';
+            }, 4000);
         });
 
     </script>
