@@ -112,7 +112,7 @@
         <div id="nav-links" class="flex space-x-8 text-lg font-semibold">
             <a href="#" class="hover:text-cyan-400 transition-colors" data-key="home">INICIO</a>
             <a href="#about" class="hover:text-cyan-400 transition-colors" data-key="about">NOSOTROS</a>
-            <a href="#gallery" class="hover:text-cyan-400 transition-colors" data-key="gallery">GALERÍA</a>
+            <a href="#gallery" class="hover:text-cyan-400 transition-colors" data-key="gallery">CURSOS</a>
             <a href="#products" class="hover:text-cyan-400 transition-colors" data-key="products">PRODUCTOS</a>
         </div>
         
@@ -170,43 +170,117 @@
 
         <!-- 5. Contenido Estático (Aparece después de la animación del video) -->
 
-        <!-- Segunda Pantalla (Aparece después del scrubbing) -->
-        <div id="about" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
-            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-cyan-400" data-key="about_title">
-                El Futuro es Digital
-            </h2>
-            <p class="text-xl max-w-4xl mb-10 text-gray-300" data-key="about_p">
-                Somos una empresa especializada en Inteligencia Artificial. Desarrollamos soluciones innovadoras y creamos modelos inteligentes para impulsar el futuro de la tecnología.
-            </p>
-            <button class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" data-key="about_btn">
-                VER COLECCIÓN
-            </button>
+        <!-- Sección Nosotros -->
+        <div id="about" class="min-h-screen flex flex-col justify-center p-8 bg-gray-900 text-white relative z-20">
+            <div class="w-full px-4 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-left">
+                    <p class="text-sm md:text-base font-bold tracking-widest text-[#00FFFF] mb-4 uppercase">EL FUTURO ES AHORA</p>
+                    <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-white drop-shadow-lg leading-tight">
+                        Transformamos la<br>creatividad con<br><span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Inteligencia Artificial</span>
+                    </h2>
+                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
+                        Artificial Models es un portal dedicado a la exploración y formación profesional en arte digital generativo. Nuestra misión es empoderar a creadores, arquitectos y empresas con las herramientas del mañana.
+                    </p>
+                </div>
+                <!-- Espacio para imagen 16:9 -->
+                <div class="w-full aspect-video bg-gray-800/50 rounded-2xl border border-gray-700 flex items-center justify-center shadow-[0_0_30px_rgba(0,255,255,0.1)]">
+                    <span class="text-gray-500"><i class="fas fa-image text-4xl mb-2 block text-center"></i>Imagen 16:9</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Tercera Pantalla -->
-        <div id="gallery" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
-            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-emerald-400" data-key="gallery_title">
-                Únete a la Órbita
-            </h2>
-            <p class="text-2xl max-w-4xl mb-10 text-gray-300" data-key="gallery_p">
-                Sé parte de la comunidad exclusiva de artistas y coleccionistas.
-            </p>
-            <button class="px-8 py-3 bg-white text-gray-900 text-xl font-bold rounded-full hover:bg-gray-300 transition-colors" data-key="gallery_btn">
-                ÚNETE AHORA
-            </button>
+        <!-- Sección Oferta Académica (Antes Galería) -->
+        <div id="gallery" class="min-h-screen flex flex-col justify-center p-8 pt-32 bg-gray-900 text-white relative z-20">
+            <div class="w-full px-4 md:px-16 mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-left text-white">Oferta <span class="text-[#00FFFF]">Académica</span></h2>
+                <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light text-left max-w-4xl">
+                    Domina las herramientas de IA generativa y aplica soluciones innovadoras en tu campo profesional.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">
+                <!-- Card 1 -->
+                <div class="group relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-[#00FFFF]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,255,255,0.1)] flex flex-col justify-between">
+                    <div>
+                        <!-- Imagen 16:9 con etiqueta Empresas -->
+                        <div class="relative w-full aspect-video mb-0 rounded-none overflow-hidden bg-gray-800 border border-gray-700 flex items-center justify-center">
+                            <i class="fas fa-image text-4xl text-gray-600"></i>
+                            <div class="absolute bottom-4 left-4 px-3 py-1 bg-[#00FFFF] text-black text-xs font-bold rounded-full shadow-md pointer-events-none">
+                                Empresas
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-[#00FFFF] transition-colors">Workshop de IA: Marketing & Negocios</h3>
+                        <ul class="space-y-3 text-gray-300 text-base mb-6">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-[#00FFFF] mr-3"></i> 1 año de Google AI Pro</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-[#00FFFF] mr-3"></i> 1 mes de Midjourney</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-[#00FFFF] mr-3"></i> Créditos en Replicate</li>
+                        </ul>
+                    </div>
+                    <div class="pt-6 border-t border-white/10">
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Inversión</p>
+                        <div class="text-3xl font-bold text-white">$20,000 MXN</div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-[#00FFFF]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,255,255,0.1)] flex flex-col justify-between">
+                    <div>
+                        <!-- Imagen 16:9 con etiqueta Arquitectos -->
+                        <div class="relative w-full aspect-video mb-0 rounded-none overflow-hidden bg-gray-800 border border-gray-700 flex items-center justify-center">
+                            <i class="fas fa-image text-4xl text-gray-600"></i>
+                            <div class="absolute bottom-4 left-4 px-3 py-1 bg-[#00FFFF] text-black text-xs font-bold rounded-full shadow-md pointer-events-none">
+                                Arquitectos
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-[#00FFFF] transition-colors">Taller de IA Aplicada para Arquitectos</h3>
+                        <p class="text-gray-300 text-base mb-6">Domina la creación de renders avanzados y recorridos dinámicos con herramientas de última generación.</p>
+                        <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#00FFFF]/10 text-[#00FFFF] text-sm font-semibold mb-8 border border-[#00FFFF]/20">
+                            <i class="fas fa-user-friends mr-2"></i> Máximo 10 personas
+                        </div>
+                    </div>
+                    <div class="pt-6 border-t border-white/10">
+                        <p class="text-xs text-gray-400 uppercase tracking-wider mb-1">Inversión</p>
+                        <div class="text-3xl font-bold text-white">$3,500 MXN</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Cuarta Pantalla (Productos) -->
-        <div id="products" class="h-screen flex flex-col justify-center items-center p-8 text-center bg-black bg-opacity-70 text-white">
-            <h2 class="text-6xl font-extrabold tracking-tight mb-4 text-fuchsia-400" data-key="products_title">
-                Creaciones con IA
-            </h2>
-            <p class="text-2xl max-w-4xl mb-10 text-gray-300" data-key="products_p">
-                Explora nuestras herramientas innovadoras, desde una app de IA que genera imágenes de productos hasta otra diseñada para visualización arquitectónica.
-            </p>
-            <button class="px-8 py-3 border border-fuchsia-400 text-fuchsia-400 text-xl font-bold rounded-full hover:bg-fuchsia-400 hover:text-black transition-colors" data-key="products_btn">
-                EXPLORAR PRODUCTOS
-            </button>
+        <!-- Sección Herramientas & Apps (Antes Productos) -->
+        <div id="products" class="min-h-screen flex flex-col justify-center items-center p-8 bg-gray-900 text-white relative z-20">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">Herramientas & <span class="text-[#00FFFF]">Apps</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl w-full">
+                <!-- Card 1 -->
+                <div class="relative p-8 rounded-2xl bg-gray-800/40 border border-gray-700 hover:border-[#00FFFF]/30 transition-all duration-300 flex flex-col items-center text-center h-80 justify-center group">
+                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]">PRÓXIMAMENTE</div>
+                    <div class="w-16 h-16 mb-6 rounded-full bg-gray-700/50 flex items-center justify-center group-hover:bg-[#00FFFF]/10 transition-colors">
+                        <i class="fas fa-terminal text-2xl text-gray-400 group-hover:text-[#00FFFF]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Prompt Builder Pro</h3>
+                    <p class="text-gray-400 text-sm">Genera prompts perfectos en segundos.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="relative p-8 rounded-2xl bg-gray-800/40 border border-gray-700 hover:border-[#00FFFF]/30 transition-all duration-300 flex flex-col items-center text-center h-80 justify-center group">
+                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]">PRÓXIMAMENTE</div>
+                    <div class="w-16 h-16 mb-6 rounded-full bg-gray-700/50 flex items-center justify-center group-hover:bg-[#00FFFF]/10 transition-colors">
+                        <i class="fas fa-image text-2xl text-gray-400 group-hover:text-[#00FFFF]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Art Upscaler AI</h3>
+                    <p class="text-gray-400 text-sm">Mejora la resolución de tus obras.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="relative p-8 rounded-2xl bg-gray-800/40 border border-gray-700 hover:border-[#00FFFF]/30 transition-all duration-300 flex flex-col items-center text-center h-80 justify-center group">
+                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]">PRÓXIMAMENTE</div>
+                    <div class="w-16 h-16 mb-6 rounded-full bg-gray-700/50 flex items-center justify-center group-hover:bg-[#00FFFF]/10 transition-colors">
+                        <i class="fas fa-rocket text-2xl text-gray-400 group-hover:text-[#00FFFF]"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">NFT Launchpad</h3>
+                    <p class="text-gray-400 text-sm">Lanza tu colección al mercado.</p>
+                </div>
+            </div>
         </div>
 
 
@@ -248,51 +322,61 @@
                 <i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito!
             </div>
         </div>
-    </div>
 
-    <!-- 6. Barra Inferior de Estadísticas -->
-    <div class="fixed bottom-0 left-0 right-0 z-50 px-6 py-8 flex justify-between items-center bg-black bg-opacity-30 backdrop-blur-custom text-white ui-fade-in">
-        
-        <!-- Botón Play Video y Redes Sociales -->
-        <div class="flex items-center">
-            <!-- Iconos de Redes Sociales -->
-            <div class="flex space-x-5">
-                <!-- Facebook -->
-                <a href="https://www.facebook.com/artificialmodels/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition-colors" aria-label="Facebook">
-                    <i class="fab fa-facebook-f fa-lg"></i>
-                </a>
-                <!-- TikTok -->
-                <a href="https://www.tiktok.com/@artificial_models" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition-colors" aria-label="TikTok">
-                    <i class="fab fa-tiktok fa-lg"></i>
-                </a>
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/artificial_models/" target="_blank" rel="noopener noreferrer" class="text-white hover:text-cyan-400 transition-colors" aria-label="Instagram">
-                    <i class="fab fa-instagram fa-lg"></i>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Número de Versión -->
-        <div class="absolute left-1/2 -translate-x-1/2 text-center">
-            <p class="text-xs text-gray-500">v1.0.0</p>
-        </div>
+        <!-- Footer Final -->
+        <footer class="bg-black text-white py-16 border-t border-gray-800 relative z-20">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- Columna 1: Marca -->
+                <div class="flex flex-col items-start">
+                    <div class="flex items-center mb-6">
+                        <img src="/Logo.svg" alt="Artificial Models Logo" class="h-10 mr-3">
+                        <span class="text-xl font-bold tracking-wide">Artificial Models</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Explorando las fronteras de la creatividad humana y la inteligencia artificial.
+                    </p>
+                </div>
 
-        <!-- Estadísticas -->
-        <div class="flex space-x-10 text-lg">
-            <div class="text-center">
-                <p class="font-bold text-2xl">27K+</p>
-                <p class="text-sm text-gray-400" data-key="stats_artists">ARTISTAS</p>
-            </div>
-            <div class="text-center">
-                <p class="font-bold text-2xl">876K+</p>
-                <p class="text-sm text-gray-400" data-key="stats_artwork">OBRAS DE ARTE</p>
-            </div>
-            <div class="text-center">
-                <p class="font-bold text-2xl">20K+</p>
-                <p class="text-sm text-gray-400" data-key="stats_auction">SUBASTAS</p>
-            </div>
-        </div>
+                <!-- Columna 2: Navegación -->
+                <div>
+                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500">Navegación</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li><a href="#" class="hover:text-[#00FFFF] transition-colors duration-300">Inicio</a></li>
+                        <li><a href="#about" class="hover:text-[#00FFFF] transition-colors duration-300">Nosotros</a></li>
+                        <li><a href="#gallery" class="hover:text-[#00FFFF] transition-colors duration-300">Cursos</a></li>
+                        <li><a href="#products" class="hover:text-[#00FFFF] transition-colors duration-300">Productos</a></li>
+                    </ul>
+                </div>
 
+                <!-- Columna 3: Legal -->
+                <div>
+                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500">Legal</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li><a href="#" class="hover:text-[#00FFFF] transition-colors duration-300">Privacidad</a></li>
+                        <li><a href="#" class="hover:text-[#00FFFF] transition-colors duration-300">Términos</a></li>
+                        <li><a href="#" class="hover:text-[#00FFFF] transition-colors duration-300">Cookies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Contacto -->
+                <div>
+                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500">Contacto</h3>
+                    <a href="#contact" class="inline-block bg-[#00FFFF] text-black font-bold py-3 px-8 rounded-full mb-8 hover:bg-cyan-300 transition-colors duration-300 shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                        Contáctanos &gt;
+                    </a>
+                    <div class="flex space-x-6">
+                        <a href="https://www.facebook.com/artificialmodels/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://www.instagram.com/artificial_models/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://www.tiktok.com/@artificial_models" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300"><i class="fab fa-tiktok fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 mt-8 pt-4 text-center text-gray-500 text-sm">
+                &copy; 2026 Artificial Models. Todos los derechos reservados. Version 1.0.1
+            </div>
+        </footer>
     </div>
 
     <!-- Icono de Mouse para Scroll -->
@@ -404,7 +488,7 @@
             es: {
                 home: "INICIO",
                 about: "NOSOTROS",
-                gallery: "GALERÍA",
+                gallery: "CURSOS",
                 products: "PRODUCTOS",
                 contact: "Contáctanos",
                 hero_subtitle: "DESCUBRE ARTE DIGITAL Y PRODUCTOS DE IA",
@@ -431,7 +515,7 @@
             en: {
                 home: "HOME",
                 about: "ABOUT",
-                gallery: "GALLERY",
+                gallery: "COURSES",
                 products: "PRODUCTS",
                 contact: "Contact Us",
                 hero_subtitle: "DISCOVER DIGITAL ART AND IA PRODUCTS",
