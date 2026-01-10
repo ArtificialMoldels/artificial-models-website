@@ -11,6 +11,14 @@
     <!-- 1. Añadir el enlace a Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("FRp8uLD91y-g5tmak"); // <--- PEGA TU PUBLIC KEY AQUÍ
+        })();
+    </script>
+
     <style>
         /* Define el contenedor de desplazamiento */
         .scroll-container {
@@ -172,13 +180,14 @@
 
         <!-- Sección Nosotros -->
         <div id="about" class="min-h-screen flex flex-col justify-center p-8 bg-gray-900 text-white relative z-20">
-            <div class="w-full px-4 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="absolute inset-0 bg-black/60 z-0"></div>
+            <div class="w-full px-4 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
                 <div class="text-left">
-                    <p class="text-sm md:text-base font-bold tracking-widest text-[#00FFFF] mb-4 uppercase">EL FUTURO ES AHORA</p>
-                    <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-white drop-shadow-lg leading-tight">
+                    <p class="text-sm md:text-base font-bold tracking-widest text-[#00FFFF] mb-4 uppercase" data-key="about_subtitle">EL FUTURO ES AHORA</p>
+                    <h2 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-white drop-shadow-lg leading-tight" data-key="about_heading">
                         Transformamos la<br>creatividad con<br><span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Inteligencia Artificial</span>
                     </h2>
-                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light">
+                    <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light" data-key="about_desc">
                         Artificial Models es un portal dedicado a la exploración y formación profesional en arte digital generativo. Nuestra misión es empoderar a creadores, arquitectos y empresas con las herramientas del mañana.
                     </p>
                 </div>
@@ -192,13 +201,21 @@
                         </div>
                         <!-- Slide 2 -->
                         <div class="min-w-full h-full relative">
-                            <img src="/Img/Arq_02.webp" alt="Slide 2" class="w-full h-full object-cover">
+                            <img src="/Img/MKT_01.webp" alt="Slide 2" class="w-full h-full object-cover">
                         </div>
-                        <!-- Slide 2 -->
+                        <!-- Slide 3 -->
                         <div class="min-w-full h-full relative">
                             <img src="/Img/Arq_03.webp" alt="Slide 2" class="w-full h-full object-cover">
                         </div>
                         <!-- Slide 4 -->
+                        <div class="min-w-full h-full relative">
+                            <img src="/Img/MKT_02.webp" alt="Slide 2" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Slide 5 -->
+                        <div class="min-w-full h-full relative">
+                            <img src="/Img/Arq_02.webp" alt="Slide 2" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Slide 6 -->
                         <div class="min-w-full h-full relative bg-gray-900 flex items-center justify-center">
                             <i class="fas fa-brain text-6xl text-cyan-400 animate-pulse"></i>
                         </div>
@@ -217,58 +234,55 @@
         <!-- Sección Oferta Académica (Antes Galería) -->
         <div id="gallery" class="min-h-screen flex flex-col justify-center p-8 pt-32 bg-gray-900 text-white relative z-20">
             <div class="w-full px-4 md:px-16 mb-12">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-left text-white">Oferta <span class="text-[#00FFFF]">Académica</span></h2>
-                <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light text-left max-w-4xl">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-left text-white" data-key="offer_title">Oferta <span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Académica</span></h2>
+                <p class="text-xl md:text-2xl text-gray-300 leading-relaxed font-light text-left max-w-4xl" data-key="offer_desc">
                     Domina las herramientas de IA generativa y aplica soluciones innovadoras en tu campo profesional.
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto px-4">
                 <!-- Card 1 -->
-                <div class="group relative rounded-[2.5rem] overflow-hidden bg-gray-800/40 border border-gray-800/50 hover:border-[#00f2ff]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,255,0.1)] flex flex-col justify-between">
+                <div class="group relative rounded-[2.5rem] overflow-hidden bg-gray-800/40 border border-gray-800/50 hover:border-[#00f2ff]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,255,0.1)] flex flex-col">
                     <!-- Header Image -->
                     <div class="relative w-full aspect-video bg-[#1f2937] border-b border-gray-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
                         <img src="Img/Producto.webp" alt="Workshop Marketing" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute bottom-6 left-8 px-4 py-1 bg-[#00f2ff] text-black text-sm font-bold uppercase rounded-full shadow-md pointer-events-none tracking-wide z-10">
+                        <div class="absolute bottom-6 left-8 px-4 py-1 bg-[#00f2ff] text-black text-sm font-bold uppercase rounded-full shadow-md pointer-events-none tracking-wide z-10" data-key="card1_tag">
                             Empresas
                         </div>
                     </div>
                     
                     <!-- Body -->
-                    <div class="p-10 flex-grow bg-transparent relative z-10">
-                        <h3 class="text-4xl font-extrabold text-white mb-6 font-sans tracking-tight group-hover:text-[#00f2ff] transition-colors">Workshop de IA: Marketing & Negocios</h3>
-                        <p class="text-gray-300 text-lg mb-8 leading-relaxed">Optimiza procesos creativos y estrategias comerciales. Aprende a generar contenido visual de alto impacto y automatizar flujos de trabajo.</p>
+                    <div class="p-6 bg-transparent relative z-10">
+                        <h3 class="text-3xl font-extrabold text-white mb-4 font-sans tracking-tight group-hover:text-[#00f2ff] transition-colors" data-key="card1_title">Workshop de IA: Marketing & Negocios</h3>
+                        <p class="text-gray-300 text-base mb-4 leading-relaxed" data-key="card1_desc">Optimiza procesos creativos y estrategias comerciales. Aprende a generar contenido visual de alto impacto y automatizar flujos de trabajo.</p>
                     </div>
 
                     <!-- Footer -->
-                    <div class="px-10 py-8 border-t border-gray-800/60 bg-transparent relative z-10">
-                        <span class="block text-xs text-gray-500 uppercase tracking-[0.3em] mb-2">Inversión</span>
+                    <div class="px-6 py-6 border-t border-gray-800/60 bg-transparent relative z-10">
+                        <span class="block text-xs text-gray-500 uppercase tracking-[0.3em] mb-2" data-key="price_label">Inversión</span>
                         <div class="text-5xl font-extrabold text-white tracking-tighter">$20,000 MXN</div>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="group relative rounded-[2.5rem] overflow-hidden bg-gray-800/40 border border-gray-800/50 hover:border-[#00f2ff]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,255,0.1)] flex flex-col justify-between">
+                <div class="group relative rounded-[2.5rem] overflow-hidden bg-gray-800/40 border border-gray-800/50 hover:border-[#00f2ff]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,255,0.1)] flex flex-col">
                     <!-- Header Image -->
                     <div class="relative w-full aspect-video bg-[#1f2937] border-b border-gray-800 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
                         <img src="/Img/Producto_Arq.webp" alt="Taller Arquitectos" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute bottom-6 left-8 px-4 py-1 bg-[#00f2ff] text-black text-sm font-bold uppercase rounded-full shadow-md pointer-events-none tracking-wide z-10">
+                        <div class="absolute bottom-6 left-8 px-4 py-1 bg-[#00f2ff] text-black text-sm font-bold uppercase rounded-full shadow-md pointer-events-none tracking-wide z-10" data-key="card2_tag">
                             Arquitectos
                         </div>
                     </div>
                     
                     <!-- Body -->
-                    <div class="p-10 flex-grow bg-transparent relative z-10">
-                        <h3 class="text-4xl font-extrabold text-white mb-6 font-sans tracking-tight group-hover:text-[#00f2ff] transition-colors">Taller de IA Aplicada para Arquitectos</h3>
-                        <p class="text-gray-300 text-lg mb-8 leading-relaxed">Domina la creación de renders avanzados y recorridos dinámicos con herramientas de última generación.</p>
-                        <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#00f2ff]/10 text-[#00f2ff] text-sm font-bold border border-[#00f2ff]/20">
-                            <i class="fas fa-user-friends mr-2"></i> Máximo 10 personas
-                        </div>
+                    <div class="p-6 bg-transparent relative z-10">
+                        <h3 class="text-3xl font-extrabold text-white mb-4 font-sans tracking-tight group-hover:text-[#00f2ff] transition-colors" data-key="card2_title">Taller de IA Aplicada para Arquitectos</h3>
+                        <p class="text-gray-300 text-base mb-4 leading-relaxed" data-key="card2_desc">Domina la creación de renders avanzados y recorridos dinámicos con herramientas de última generación. Máximo 10 personas.</p>
                     </div>
 
                     <!-- Footer -->
-                    <div class="px-10 py-8 border-t border-gray-800/60 bg-transparent relative z-10">
-                        <span class="block text-xs text-gray-500 uppercase tracking-[0.3em] mb-2">Inversión</span>
+                    <div class="px-6 py-6 border-t border-gray-800/60 bg-transparent relative z-10">
+                        <span class="block text-xs text-gray-500 uppercase tracking-[0.3em] mb-2" data-key="price_label">Inversión</span>
                         <div class="text-5xl font-extrabold text-white tracking-tighter">$3,500 MXN</div>
                     </div>
                 </div>
@@ -281,8 +295,8 @@
             <div class="absolute inset-0 bg-black/60 z-0"></div>
 
             <div class="w-full px-4 md:px-16 mb-16 text-left relative z-10">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Herramientas & <span class="text-[#00FFFF]">Apps</span></h2>
-                <p class="text-xl text-gray-300 font-light max-w-2xl">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4" data-key="tools_title">Herramientas & <span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]"">Apps</span></h2>
+                <p class="text-xl text-gray-300 font-light max-w-2xl" data-key="tools_desc">
                     Estamos desarrollando aplicaciones potenciadas por IA para simplificar y potenciar tu flujo de trabajo.
                 </p>
             </div>
@@ -290,41 +304,41 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl w-full mx-auto relative z-10">
                 <!-- Card 1 -->
                 <div class="relative p-8 rounded-[2.5rem] bg-gray-800/40 border border-gray-700 hover:border-[#00f2ff]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,255,0.1)] flex flex-col items-center text-center h-96 justify-between group">
-                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]">PRÓXIMAMENTE</div>
+                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]" data-key="coming_soon">PRÓXIMAMENTE</div>
                     <div class="flex flex-col items-center justify-center flex-grow">
                         <div class="w-16 h-16 mb-6 rounded-full bg-gray-700/50 flex items-center justify-center group-hover:bg-[#00FFFF]/10 transition-colors">
                             <i class="fas fa-terminal text-2xl text-gray-400 group-hover:text-[#00FFFF]"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Prompt Builder Pro</h3>
-                        <p class="text-gray-400 text-sm">Genera prompts perfectos en segundos.</p>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-key="app1_title">Prompt Builder Pro</h3>
+                        <p class="text-gray-400 text-sm" data-key="app1_desc">Genera prompts perfectos en segundos.</p>
                     </div>
-                    <button class="mt-6 px-8 py-2 bg-[#00f2ff] text-black rounded-full font-bold text-sm uppercase shadow-[0_0_15px_rgba(0,242,255,0.4)] hover:bg-white hover:scale-105 transition-all duration-300">Entrar</button>
+                    <button class="mt-6 px-8 py-2 bg-[#00f2ff] text-black rounded-full font-bold text-sm uppercase shadow-[0_0_15px_rgba(0,242,255,0.4)] hover:bg-white hover:scale-105 transition-all duration-300" data-key="enter_btn">Entrar</button>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="relative p-8 rounded-[2.5rem] bg-gray-800/40 border border-gray-700 hover:border-[#00f2ff]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,255,0.1)] flex flex-col items-center text-center h-96 justify-between group">
-                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]">PRÓXIMAMENTE</div>
+                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]" data-key="coming_soon">PRÓXIMAMENTE</div>
                     <div class="flex flex-col items-center justify-center flex-grow">
                         <div class="w-16 h-16 mb-6 rounded-full bg-gray-700/50 flex items-center justify-center group-hover:bg-[#00FFFF]/10 transition-colors">
                             <i class="fas fa-image text-2xl text-gray-400 group-hover:text-[#00FFFF]"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Generador de Producto</h3>
-                        <p class="text-gray-400 text-sm">Genera imágenes llamativas de tus productos en poco tiempo.</p>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-key="app2_title">Generador de Producto</h3>
+                        <p class="text-gray-400 text-sm" data-key="app2_desc">Genera imágenes llamativas de tus productos en poco tiempo.</p>
                     </div>
-                    <button class="mt-6 px-8 py-2 bg-[#00f2ff] text-black rounded-full font-bold text-sm uppercase shadow-[0_0_15px_rgba(0,242,255,0.4)] hover:bg-white hover:scale-105 transition-all duration-300">Entrar</button>
+                    <button class="mt-6 px-8 py-2 bg-[#00f2ff] text-black rounded-full font-bold text-sm uppercase shadow-[0_0_15px_rgba(0,242,255,0.4)] hover:bg-white hover:scale-105 transition-all duration-300" data-key="enter_btn">Entrar</button>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="relative p-8 rounded-[2.5rem] bg-gray-800/40 border border-gray-800/50 hover:border-[#00f2ff]/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(0,242,255,0.1)] flex flex-col items-center text-center h-96 justify-between group">
-                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]">PRÓXIMAMENTE</div>
+                    <div class="absolute top-4 right-4 px-3 py-1 text-xs font-bold text-black bg-[#00FFFF] rounded-full shadow-[0_0_10px_rgba(0,255,255,0.4)]" data-key="coming_soon">PRÓXIMAMENTE</div>
                     <div class="flex flex-col items-center justify-center flex-grow">
                         <div class="w-16 h-16 mb-6 rounded-full bg-gray-700/50 flex items-center justify-center group-hover:bg-[#00FFFF]/10 transition-colors">
                             <i class="fas fa-rocket text-2xl text-gray-400 group-hover:text-[#00FFFF]"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Generador Arquitectónico</h3>
-                        <p class="text-gray-400 text-sm">Genera renders con calidad fotográfica a partir de bocetos o modelos simples.</p>
+                        <h3 class="text-2xl font-bold text-white mb-2" data-key="app3_title">Generador Arquitectónico</h3>
+                        <p class="text-gray-400 text-sm" data-key="app3_desc">Genera renders con calidad fotográfica a partir de bocetos o modelos simples.</p>
                     </div>
-                    <button class="mt-6 px-8 py-2 bg-[#00f2ff] text-black rounded-full font-bold text-sm uppercase shadow-[0_0_15px_rgba(0,242,255,0.4)] hover:bg-white hover:scale-105 transition-all duration-300">Entrar</button>
+                    <button class="mt-6 px-8 py-2 bg-[#00f2ff] text-black rounded-full font-bold text-sm uppercase shadow-[0_0_15px_rgba(0,242,255,0.4)] hover:bg-white hover:scale-105 transition-all duration-300" data-key="enter_btn">Entrar</button>
                 </div>
             </div>
         </div>
@@ -337,28 +351,28 @@
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-first-name" data-key="form_name">Nombre</label>
-                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-first-name" type="text" placeholder="Jane">
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-first-name" type="text" name="name" placeholder="Pedro" required>
                         <p class="text-red-500 text-xs italic hidden">Por favor, rellena este campo.</p>
                     </div>
                     <div class="w-full md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-email" data-key="form_email">Correo</label>
-                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-email" type="email" placeholder="jane@example.com">
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-email" type="email" name="email" placeholder="pedro@example.com" required>
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-subject" data-key="form_subject">Asunto</label>
-                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-subject" type="text" placeholder="Interesado en tus productos de IA">
+                        <input class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500" id="grid-subject" type="text" name="title" placeholder="Interesado en tus productos de IA" required>
                     </div>
                 </div>
                 <div class="flex flex-wrap -mx-3 mb-6">
                     <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-400 text-xs font-bold mb-2" for="grid-message" data-key="form_message">Mensaje</label>
-                        <textarea class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500 h-48 resize-none" id="grid-message"></textarea>
+                        <textarea class="appearance-none block w-full bg-gray-800 text-white border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-700 focus:border-cyan-500 h-48 resize-none" id="grid-message" name="message" required></textarea>
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <button id="submit-btn" class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" type="button" data-key="form_btn">
+                    <button id="submit-btn" class="px-8 py-3 border border-cyan-400 text-cyan-400 text-xl font-bold rounded-full hover:bg-cyan-400 hover:text-black transition-colors" type="submit" data-key="form_btn">
                         Enviar Mensaje
                     </button>
                 </div>
@@ -378,14 +392,14 @@
                         <img src="/Logo.svg" alt="Artificial Models Logo" class="h-10 mr-3">
                         <span class="text-xl font-bold tracking-wide">Artificial Models</span>
                     </div>
-                    <p class="text-gray-400 text-base leading-relaxed">
+                    <p class="text-gray-400 text-base leading-relaxed" data-key="footer_desc">
                         Explorando las fronteras de la creatividad humana y la inteligencia artificial.
                     </p>
                 </div>
 
                 <!-- Columna 2: Navegación -->
                 <div>
-                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500">Navegación</h3>
+                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500" data-key="nav_title">Navegación</h3>
                     <ul class="space-y-4 text-gray-300">
                         <li><a href="#" class="hover:text-[#00FFFF] transition-colors duration-300">Inicio</a></li>
                         <li><a href="#about" class="hover:text-[#00FFFF] transition-colors duration-300">Nosotros</a></li>
@@ -396,7 +410,7 @@
 
                 <!-- Columna 3: Síguenos -->
                 <div>
-                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500">SÍGUENOS</h3>
+                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500" data-key="follow_title">SÍGUENOS</h3>
                     <div class="flex space-x-6">
                         <a href="https://www.facebook.com/artificialmodels/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300"><i class="fab fa-facebook-f fa-lg"></i></a>
                         <a href="https://www.instagram.com/artificial_models/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#00FFFF] transition-colors duration-300"><i class="fab fa-instagram fa-lg"></i></a>
@@ -406,7 +420,7 @@
 
                 <!-- Columna 4: Contacto -->
                 <div>
-                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500">Contacto:</h3>
+                    <h3 class="text-sm font-bold mb-6 uppercase tracking-widest text-gray-500" data-key="contact_label">Contacto:</h3>
                     <a href="#contact" class="inline-block bg-[#00FFFF] text-black font-bold py-3 px-8 rounded-full mb-8 hover:bg-cyan-300 transition-colors duration-300 shadow-[0_0_15px_rgba(0,255,255,0.3)]">
                         Contáctanos &gt;
                     </a>
@@ -418,7 +432,7 @@
             </div>
 
             <!-- Copyright -->
-            <div class="border-t border-gray-800 mt-8 pt-4 text-center text-gray-500 text-sm">
+            <div class="border-t border-gray-800 mt-8 pt-4 text-center text-gray-500 text-sm" data-key="rights">
                 &copy; 2026 Artificial Models. Todos los derechos reservados. Version 1.0.1
             </div>
         </footer>
@@ -537,15 +551,28 @@
                 products: "PRODUCTOS",
                 contact: "Contáctanos",
                 hero_subtitle: "DESCUBRE ARTE DIGITAL Y PRODUCTOS DE IA",
-                about_title: "El Futuro es Digital",
-                about_p: "Somos una empresa especializada en Inteligencia Artificial. Desarrollamos soluciones innovadoras y creamos modelos inteligentes para impulsar el futuro de la tecnología.",
-                about_btn: "VER COLECCIÓN",
-                gallery_title: "Únete a la Órbita",
-                gallery_p: "Sé parte de la comunidad exclusiva de artistas y coleccionistas.",
-                gallery_btn: "ÚNETE AHORA",
-                products_title: "Creaciones con IA",
-                products_p: "Explora nuestras herramientas innovadoras, desde una app de IA que genera imágenes de productos hasta otra diseñada para visualización arquitectónica.",
-                products_btn: "EXPLORAR PRODUCTOS",
+                about_subtitle: "EL FUTURO ES AHORA",
+                about_heading: 'Transformamos la<br>creatividad con<br><span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Inteligencia Artificial</span>',
+                about_desc: "Artificial Models es un portal dedicado a la exploración y formación profesional en arte digital generativo. Nuestra misión es empoderar a creadores, arquitectos y empresas con las herramientas del mañana.",
+                offer_title: 'Oferta <span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Académica</span>',
+                offer_desc: "Domina las herramientas de IA generativa y aplica soluciones innovadoras en tu campo profesional.",
+                card1_tag: "Empresas",
+                card1_title: "Workshop de IA: Marketing & Negocios",
+                card1_desc: "Optimiza procesos creativos y estrategias comerciales. Aprende a generar contenido visual de alto impacto y automatizar flujos de trabajo.",
+                price_label: "Inversión",
+                card2_tag: "Arquitectos",
+                card2_title: "Taller de IA Aplicada para Arquitectos",
+                card2_desc: "Domina la creación de renders avanzados y recorridos dinámicos con herramientas de última generación. Máximo 10 personas.",
+                tools_title: 'Herramientas & <span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Apps</span>',
+                tools_desc: "Estamos desarrollando aplicaciones potenciadas por IA para simplificar y potenciar tu flujo de trabajo.",
+                coming_soon: "PRÓXIMAMENTE",
+                app1_title: "Prompt Builder Pro",
+                app1_desc: "Genera prompts perfectos en segundos.",
+                enter_btn: "Entrar",
+                app2_title: "Generador de Producto",
+                app2_desc: "Genera imágenes llamativas de tus productos en poco tiempo.",
+                app3_title: "Generador Arquitectónico",
+                app3_desc: "Genera renders con calidad fotográfica a partir de bocetos o modelos simples.",
                 contact_title: "Contáctanos",
                 form_name: "Nombre",
                 form_email: "Correo",
@@ -553,9 +580,11 @@
                 form_message: "Mensaje",
                 form_btn: "Enviar Mensaje",
                 form_success: "¡Mensaje enviado con éxito!",
-                stats_artists: "ARTISTAS",
-                stats_artwork: "OBRAS DE ARTE",
-                stats_auction: "SUBASTAS",
+                footer_desc: "Explorando las fronteras de la creatividad humana y la inteligencia artificial.",
+                nav_title: "Navegación",
+                follow_title: "SÍGUENOS",
+                contact_label: "Contacto:",
+                rights: "&copy; 2026 Artificial Models. Todos los derechos reservados. Version 1.0.1"
             },
             en: {
                 home: "HOME",
@@ -564,15 +593,28 @@
                 products: "PRODUCTS",
                 contact: "Contact Us",
                 hero_subtitle: "DISCOVER DIGITAL ART AND IA PRODUCTS",
-                about_title: "The Future is Digital",
-                about_p: "We are a company specializing in Artificial Intelligence. We develop innovative solutions and create intelligent models to drive the future of technology.",
-                about_btn: "VIEW COLLECTION",
-                gallery_title: "Join The Orbit",
-                gallery_p: "Be part of the exclusive community of artists and collectors.",
-                gallery_btn: "JOIN US NOW",
-                products_title: "AI-Powered Creations",
-                products_p: "Explore our innovative tools, from an AI app that generates stunning product images to another designed for architectural visualization.",
-                products_btn: "EXPLORE PRODUCTS",
+                about_subtitle: "THE FUTURE IS NOW",
+                about_heading: 'Transforming<br>creativity with<br><span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Artificial Intelligence</span>',
+                about_desc: "Artificial Models is a portal dedicated to exploration and professional training in generative digital art. Our mission is to empower creators, architects, and companies with the tools of tomorrow.",
+                offer_title: 'Academic <span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Offer</span>',
+                offer_desc: "Master generative AI tools and apply innovative solutions in your professional field.",
+                card1_tag: "Companies",
+                card1_title: "AI Workshop: Marketing & Business",
+                card1_desc: "Optimize creative processes and commercial strategies. Learn to generate high-impact visual content and automate workflows.",
+                price_label: "Investment",
+                card2_tag: "Architects",
+                card2_title: "Applied AI Workshop for Architects",
+                card2_desc: "Master the creation of advanced renders and dynamic walkthroughs with next-generation tools. Max 10 people.",
+                tools_title: 'Tools & <span class="text-[#00FFFF] drop-shadow-[0_0_15px_rgba(0,255,255,0.6)]">Apps</span>',
+                tools_desc: "We are developing AI-powered applications to simplify and boost your workflow.",
+                coming_soon: "COMING SOON",
+                app1_title: "Prompt Builder Pro",
+                app1_desc: "Generate perfect prompts in seconds.",
+                enter_btn: "Enter",
+                app2_title: "Product Generator",
+                app2_desc: "Generate striking images of your products in no time.",
+                app3_title: "Architectural Generator",
+                app3_desc: "Generate photo-realistic renders from sketches or simple models.",
                 contact_title: "Contact Us",
                 form_name: "Name",
                 form_email: "Email",
@@ -580,9 +622,11 @@
                 form_message: "Message",
                 form_btn: "Send Message",
                 form_success: "Message sent successfully!",
-                stats_artists: "ARTISTS",
-                stats_artwork: "ARTWORK",
-                stats_auction: "AUCTION",
+                footer_desc: "Exploring the frontiers of human creativity and artificial intelligence.",
+                nav_title: "Navigation",
+                follow_title: "FOLLOW US",
+                contact_label: "Contact:",
+                rights: "&copy; 2026 Artificial Models. All rights reserved. Version 1.0.1"
             }
         };
 
@@ -590,7 +634,9 @@
             const elements = document.querySelectorAll('[data-key]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-key');
-                el.textContent = translations[lang][key];
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
             });
         };
 
@@ -621,19 +667,32 @@
         const submitBtn = document.getElementById('submit-btn');
         const successMessage = document.getElementById('success-message');
 
-        submitBtn.addEventListener('click', (event) => {
+        // Cambiamos a 'submit' para aprovechar la validación HTML5 (required)
+        contactForm.addEventListener('submit', (event) => {
             event.preventDefault(); // Prevenir el comportamiento por defecto
 
-            // Mostrar mensaje de éxito
-            successMessage.style.opacity = '1';
+            const serviceID = 'service_yb5x7ea';   // <--- PEGA TU SERVICE ID AQUÍ
+            const templateID = 'template_3li9jv3'; // <--- PEGA TU TEMPLATE ID AQUÍ
 
-            // Limpiar el formulario
-            contactForm.reset();
+            submitBtn.innerText = 'Enviando...';
 
-            // Ocultar el mensaje después de 4 segundos
-            setTimeout(() => {
-                successMessage.style.opacity = '0';
-            }, 4000);
+            emailjs.sendForm(serviceID, templateID, contactForm)
+                .then(() => {
+                    submitBtn.innerText = 'Enviar Mensaje';
+                    successMessage.style.opacity = '1';
+                    successMessage.innerText = '¡Mensaje enviado con éxito!';
+                    successMessage.classList.remove('text-red-500');
+                    successMessage.classList.add('text-emerald-400');
+                    contactForm.reset();
+                    setTimeout(() => { successMessage.style.opacity = '0'; }, 4000);
+                }, (err) => {
+                    submitBtn.innerText = 'Enviar Mensaje';
+                    successMessage.style.opacity = '1';
+                    successMessage.innerText = 'Error al enviar. Intenta de nuevo.';
+                    successMessage.classList.remove('text-emerald-400');
+                    successMessage.classList.add('text-red-500');
+                    console.error('FAILED...', err);
+                });
         });
 
         // -----------------------------------------------------------
